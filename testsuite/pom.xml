@@ -123,7 +123,6 @@
         <dependency>
             <groupId>io.undertow</groupId>
             <artifactId>undertow-core</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
