@@ -55,6 +55,23 @@ public class PNCConnectorImpl implements PNCConnector {
 
     public ClientRequest getClient(String endpoint, String accessToken)
             throws ConfigurationParseException {
+        System.out.println("___________-------------------______________");
+        System.out.println("___________-------------------______________");
+        System.out.println("___________-------------------______________");
+        System.out.println("___________-------------------______________");
+        System.out.println("getClient: endpoint: " + endpoint);
+        if (accessToken == null) {
+            System.out.println("getClient: accessToken: null");
+        } else {
+            System.out.println("getClient: accessToken: " + accessToken);
+        }
+        System.out.println("___________-------------------______________");
+        System.out.println("___________-------------------______________");
+        System.out.println("___________-------------------______________");
+        System.out.println("___________-------------------______________");
+        System.out.println("___________-------------------______________");
+        System.out.println("___________-------------------______________");
+        System.out.println("___________-------------------______________");
         ClientRequest request = new ClientRequest(PNC_BASE_URL + endpoint);
         request.accept(MediaType.APPLICATION_JSON);
         request.header("Authorization", "Bearer " + accessToken);

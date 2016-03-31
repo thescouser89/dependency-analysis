@@ -55,6 +55,7 @@ public class PncRemoteTest {
 
     @Test
     public void testCreateRemoveBC() throws Exception {
+
         String bcName = "BCTestName-" + UUID.randomUUID().toString();
         int environmentId = 1;
         int projectId = 1;

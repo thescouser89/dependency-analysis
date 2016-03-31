@@ -48,13 +48,31 @@ public class PNCAuthentication {
         if (accessToken == null
                 || (oldAccessToken != null && oldAccessToken.equals(this.accessToken))) {
             try {
+                System.out.println("___++++++++++ Getting config +++++++++++++++_______");
                 DAConfig conf = config.getConfig();
                 String keycloakServer = conf.getKeycloakServer();
                 String realm = conf.getKeycloakRealm();
                 String clientId = conf.getKeycloakClientid();
                 String username = conf.getKeycloakUsername();
                 String password = conf.getKeycloakPassword();
+                System.out.println("___++++++++++ End Getting config +++++++++++++++_______");
 
+                System.out.println("**********************************************");
+                System.out.println("**********************************************");
+                System.out.println("**********************************************");
+                System.out.println("**********************************************");
+                System.out.println("**********************************************");
+                System.out.println("keycloak server: " + keycloakServer);
+                System.out.println("endpoint       : " + keycloakServer + "/auth/realms/" + realm + "/tokens/grants/access");
+                System.out.println("clientId       : " + clientId);
+                System.out.println("username       : " + username);
+                System.out.println("password       : " + password);
+                System.out.println("===============================================");
+                System.out.println("===============================================");
+                System.out.println("===============================================");
+                System.out.println("===============================================");
+                System.out.println("===============================================");
+                System.out.println("===============================================");
                 accessToken = getAccessToken(keycloakServer + "/auth/realms/" + realm
                         + "/tokens/grants/access", clientId, username, password);
             } catch (IOException | ConfigurationParseException e) {
