@@ -38,9 +38,6 @@ public class PNCAuthentication {
 
     private String accessToken;
 
-    @Inject
-
-
     /**
      * Authenticates to PNC using Keycloak server, if the current accessToken the same as the
      * accessToken passed as a parameter
@@ -66,7 +63,8 @@ public class PNCAuthentication {
                 System.out.println("**********************************************");
                 System.out.println("**********************************************");
                 System.out.println("keycloak server: " + keycloakServer);
-                System.out.println("endpoint       : " + keycloakServer + "/auth/realms/" + realm + "/tokens/grants/access");
+                System.out.println("endpoint       : " + keycloakServer + "/auth/realms/" + realm
+                        + "/tokens/grants/access");
                 System.out.println("clientId       : " + clientId);
                 System.out.println("username       : " + username);
                 System.out.println("password       : " + password);
@@ -115,13 +113,15 @@ public class PNCAuthentication {
         System.out.println("Params: " + urlParams);
         System.out.println("==== Outside the matrix ====");
 
-
         CloseableHttpClient httpclient = HttpClients.createDefault();
 
-        System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.SimpleLog");
+        System.setProperty("org.apache.commons.logging.Log",
+                "org.apache.commons.logging.impl.SimpleLog");
         System.setProperty("org.apache.commons.logging.simplelog.showdatetime", "true");
-        System.setProperty("org.apache.commons.logging.simplelog.log.httpclient.wire.header", "debug");
-        System.setProperty("org.apache.commons.logging.simplelog.log.org.apache.commons.httpclient", "debug");
+        System.setProperty("org.apache.commons.logging.simplelog.log.httpclient.wire.header",
+                "debug");
+        System.setProperty(
+                "org.apache.commons.logging.simplelog.log.org.apache.commons.httpclient", "debug");
         HttpPost httpPost = new HttpPost(url);
 
         // add header
@@ -164,7 +164,7 @@ public class PNCAuthentication {
         } finally {
             response.close();
         }
-        return new String[]{accessToken, refreshToken};
+        return new String[] { accessToken, refreshToken };
 
     }
 }
