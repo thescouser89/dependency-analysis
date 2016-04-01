@@ -76,8 +76,8 @@ public class PNCAuthentication {
                 accessToken = getAccessToken(keycloakServer + "/auth/realms/" + realm
                         + "/tokens/grants/access", clientId, username, password);
                 System.out.println("access token   : " + accessToken);
-                System.out.println("===============================================");
-                System.out.println("===============================================");
+                System.out.println("============****************===================");
+                System.out.println("============****************===================");
             } catch (IOException | ConfigurationParseException e) {
                 throw new RuntimeException("Failed to authenticate", e);
             }
