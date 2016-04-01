@@ -38,10 +38,13 @@ public class PNCAuthentication {
 
     private String accessToken;
 
+    @Inject
+
+
     /**
      * Authenticates to PNC using Keycloak server, if the current accessToken the same as the
      * accessToken passed as a parameter
-     *  
+     *
      * @param oldAccessToken Old accessToken, which failed to authorize a request to PNC
      */
     public void authenticate(String oldAccessToken) {
@@ -86,7 +89,7 @@ public class PNCAuthentication {
 
     /**
      * Gets the current accessToken obtained from Keycloak server
-     * 
+     *
      * @return AccessToken or null if the authentication haven't proceeded yes
      */
     @Lock(LockType.READ)
@@ -112,18 +115,24 @@ public class PNCAuthentication {
         System.out.println("Params: " + urlParams);
         System.out.println("==== Outside the matrix ====");
 
+
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost(url);
 
         // add header
         httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded");
+        System.out.println("==== finished setting the header ====");
 
         List<BasicNameValuePair> urlParameters = new ArrayList<>();
         for (Map.Entry<String, String> e : urlParams.entrySet()) {
             urlParameters.add(new BasicNameValuePair(e.getKey(), e.getValue()));
         }
+        System.out.println("==== finished setting the url parameters ====");
         httpPost.setEntity(new UrlEncodedFormEntity(urlParameters));
+        System.out.println("==== finished setting the form ====");
+        System.out.println(httpPost);
         CloseableHttpResponse response = httpclient.execute(httpPost);
+        System.out.println("==== finished executing the POST ====");
 
         String refreshToken = "";
         String accessToken = "";
@@ -150,7 +159,7 @@ public class PNCAuthentication {
         } finally {
             response.close();
         }
-        return new String[] { accessToken, refreshToken };
+        return new String[]{accessToken, refreshToken};
 
     }
 }

@@ -16,6 +16,7 @@ import org.jboss.da.communication.pnc.model.ProductVersion;
 import org.jboss.resteasy.client.ClientRequest;
 import org.jboss.resteasy.client.ClientResponse;
 import org.jboss.resteasy.util.GenericType;
+import org.slf4j.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -40,6 +41,9 @@ public class PNCConnectorImpl implements PNCConnector {
 
     @Inject
     private PNCAuthentication pncAuthenticate;
+
+    @Inject
+    Logger log;
 
     private final String PNC_BASE_URL;
 
