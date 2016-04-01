@@ -107,6 +107,11 @@ public class PNCAuthentication {
     private String[] connect(String url, Map<String, String> urlParams)
             throws ClientProtocolException, IOException {
 
+        System.out.println("==== Inside the matrix ====");
+        System.out.println("URL   : " + url);
+        System.out.println("Params: " + urlParams);
+        System.out.println("==== Outside the matrix ====");
+
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost(url);
 
@@ -127,6 +132,7 @@ public class PNCAuthentication {
 
             String line;
             while ((line = rd.readLine()) != null) {
+                System.out.println("<><><><><><>: line: " + line);
                 if (line.contains("refresh_token")) {
                     String[] respContent = line.split(",");
                     for (String split : respContent) {
