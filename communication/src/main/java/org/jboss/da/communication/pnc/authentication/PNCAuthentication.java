@@ -117,6 +117,11 @@ public class PNCAuthentication {
 
 
         CloseableHttpClient httpclient = HttpClients.createDefault();
+
+        System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.SimpleLog");
+        System.setProperty("org.apache.commons.logging.simplelog.showdatetime", "true");
+        System.setProperty("org.apache.commons.logging.simplelog.log.httpclient.wire.header", "debug");
+        System.setProperty("org.apache.commons.logging.simplelog.log.org.apache.commons.httpclient", "debug");
         HttpPost httpPost = new HttpPost(url);
 
         // add header
